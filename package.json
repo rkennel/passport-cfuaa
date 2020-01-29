@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/rkennel/passport-cfuaa/issues"
   },
-  "homepage": "https://github.com/rkennel/passport-cfuaa#readme"
+  "homepage": "https://github.com/rkennel/passport-cfuaa#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^3.1.0",
+    "sinon": "^8.1.1"
+  }
 }
