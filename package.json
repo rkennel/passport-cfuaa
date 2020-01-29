@@ -1,0 +1,25 @@
+{
+  "name": "passport-cfuaa",
+  "version": "1.0.0",
+  "description": "Cloud Foundry UAA strategy for Passport",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rkennel/passport-cfuaa.git"
+  },
+  "keywords": [
+    "passport",
+    "cloud foundry uaa",
+    "identity",
+    "authentication"
+  ],
+  "author": "Ryan Kennel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rkennel/passport-cfuaa/issues"
+  },
+  "homepage": "https://github.com/rkennel/passport-cfuaa#readme"
+}
