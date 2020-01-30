@@ -1,118 +1,102 @@
 const CFUAAStrategy = require("../lib/strategy");
 
-const defaultOptions = {
-  authorizationURL: "",
-  tokenURL: "",
-  clientID: "",
-  clientSecret: "",
-  callbackURL: ""
+function defaultOptions() {
+    return {
+        authorizationURL: "https://login.com/oauth/authorize",
+        tokenURL: "https://login.com/oauth/authorize",
+        clientID: "ABC-123-DEF-456",
+        clientSecret: "XYZ-789-UVW-123",
+        callbackURL: "https://app.com/callback"
+    }
 };
 
-const doNothing = function() {};
+const doNothing = function () {
+};
 
 test("A newly created strategy has the name cfuaa", () => {
-  const strategy = new CFUAAStrategy(defaultOptions, () => {});
-  expect(strategy.name).toEqual("cfuaa");
+    const strategy = new CFUAAStrategy(defaultOptions(), doNothing);
+    expect(strategy.name).toEqual("cfuaa");
 });
 
 function validateStrategyInitialization(options, verify, expectedErrorMessage) {
-  let error = undefined;
+    let error = undefined;
 
-  try {
-    const strategy = new CFUAAStrategy(options, verify);
-  } catch (e) {
-    error = e;
-  }
+    try {
+        const strategy = new CFUAAStrategy(options, verify);
+    } catch (e) {
+        error = e;
+    }
 
-  expect(error.message).toEqual(expectedErrorMessage);
+    expect(error.message).toEqual(expectedErrorMessage);
 }
 
 test("If no options object specified than it throws error", () => {
-  validateStrategyInitialization(
-    undefined,
-    doNothing,
-    "Options object was not defined"
-  );
+    validateStrategyInitialization(
+        undefined,
+        doNothing,
+        "CffUaaStrategy requires a authorizationURL option"
+    );
 });
 
 test("If options object missing authorizationURL then throw error", () => {
-  const options = {
-    tokenURL: "",
-    clientID: "",
-    clientSecret: "",
-    callbackURL: ""
-  };
+  const options = defaultOptions();
+  options.authorizationURL = undefined;
 
-  validateStrategyInitialization(
-    options,
-    doNothing,
-    "Options object missing authorizationUrl"
-  );
+    validateStrategyInitialization(
+        options,
+        doNothing,
+        "CffUaaStrategy requires a authorizationURL option"
+    );
 });
 
 test("If options object missing tokenURL then throw error", () => {
-  const options = {
-    authorizationURL: "",
-    clientID: "",
-    clientSecret: "",
-    callbackURL: ""
-  };
+  const options = defaultOptions();
+  options.tokenURL = undefined;
 
-  validateStrategyInitialization(
-    options,
-    doNothing,
-    "Options object missing tokenURL"
-  );
+    validateStrategyInitialization(
+        options,
+        doNothing,
+        "CffUaaStrategy requires a tokenURL option"
+    );
 });
 
 test("If options object missing clientID then throw error", () => {
-  const options = {
-    authorizationURL: "",
-    tokenURL: "",
-    clientSecret: "",
-    callbackURL: ""
-  };
+  const options = defaultOptions();
+  options.clientID = undefined;
 
-  validateStrategyInitialization(
-    options,
-    doNothing,
-    "Options object missing clientID"
-  );
+    validateStrategyInitialization(
+        options,
+        doNothing,
+        "CffUaaStrategy requires a clientID option"
+    );
 });
 
 test("If options object missing clientSecret then throw error", () => {
-  const options = {
-    authorizationURL: "",
-    tokenURL: "",
-    clientID: "",
-    callbackURL: ""
-  };
+  const options = defaultOptions();
+  options.clientSecret = undefined;
 
-  validateStrategyInitialization(
-    options,
-    doNothing,
-    "Options object missing clientSecret"
-  );
+    validateStrategyInitialization(
+        options,
+        doNothing,
+        "CffUaaStrategy requires a clientSecret option"
+    );
 });
 
 test("If options object missing callbackURL then throw error", () => {
-  const options = {
-    authorizationURL: "",
-    tokenURL: "",
-    clientID: "",
-    clientSecret: ""
-  };
-  validateStrategyInitialization(
-    options,
-    doNothing,
-    "Options object missing callbackURL"
-  );
+    const options = defaultOptions();
+    options.callbackURL = undefined;
+
+    validateStrategyInitialization(
+        defaultOptions,
+        doNothing,
+        "CffUaaStrategy requires a authorizationURL option"
+    );
 });
 
 test("If no verify function specified than it throws error", () => {
-  validateStrategyInitialization(
-    defaultOptions,
-    undefined,
-    "Verify function was not defined"
-  );
+    validateStrategyInitialization(
+        defaultOptions(),
+        undefined,
+        "CffUaaStrategy requires a verify callback"
+    );
 });
