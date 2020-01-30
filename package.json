@@ -4,7 +4,8 @@
   "description": "Cloud Foundry UAA strategy for Passport",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "lint": "eslint ./ --fix",
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,15 @@
     "url": "https://github.com/rkennel/passport-cfuaa/issues"
   },
   "homepage": "https://github.com/rkennel/passport-cfuaa#readme",
-  "dependencies": {},
+  "dependencies": {
+    "passport-oauth2": "^1.5.0"
+  },
   "devDependencies": {
     "ava": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "1.19.1",
     "sinon": "^8.1.1"
   }
 }
